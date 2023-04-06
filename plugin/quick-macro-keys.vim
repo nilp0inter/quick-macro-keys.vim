@@ -1,10 +1,14 @@
+" Quick Macro Keys
+let g:vim_macro_keys_dir = get(g:, 'vim_macro_keys_dir', '~/.vim-macro-keys')
+let g:vim_macro_keys = get(g:, 'vim_macro_keys', ['<leader>m1', '<leader>m2', '<leader>m3', '<leader>m4', '<leader>m5'])
+
 function! MapKeyToCommand(key)
     let command = input("Enter the command to execute (use ':!' for shell commands): ")
     execute "nnoremap " . a:key . " " . command
     echo "Key '" . a:key . "' mapped to command '" . command . "'"
 
     " Save the mapping to a file in the global directory
-    let global_dir = expand("~/.vim-macro-keys")
+    let global_dir = expand(g:vim_macro_keys_dir)
     if !isdirectory(global_dir)
         call mkdir(global_dir, "p")
     endif
@@ -16,7 +20,7 @@ endfunction
 
 function! LoadMacroKeys()
     " Load the mappings from the global directory
-    let global_dir = expand("~/.vim-macro-keys")
+    let global_dir = expand(g:vim_macro_keys_dir)
     let cwd = getcwd()
     let current_path = cwd
     let paths = []
@@ -41,10 +45,9 @@ function! LoadMacroKeys()
 endfunction
 
 function! ShowMacroMappings()
-    let key_list = ['<leader>m1', '<leader>m2', '<leader>m3', '<leader>m4', '<leader>m5']
     let mappings = []
 
-    for key in key_list
+    for key in g:vim_macro_keys
         let cmd = maparg(key, "n")
         if cmd != ""
             let mappings += [key . ' -> ' . cmd]
@@ -63,20 +66,12 @@ function! UnsetKeyMessage()
     echo "Key not set. Please set it first using the corresponding double leader command."
 endfunction
 
-nnoremap <leader>m1 :call UnsetKeyMessage()<CR>
-nnoremap <leader>m2 :call UnsetKeyMessage()<CR>
-nnoremap <leader>m3 :call UnsetKeyMessage()<CR>
-nnoremap <leader>m4 :call UnsetKeyMessage()<CR>
-nnoremap <leader>m5 :call UnsetKeyMessage()<CR>
-nnoremap <leader>ms :call ShowMacroMappings()<CR>
+for key in g:vim_macro_keys
+    execute "nnoremap " . key . " :call UnsetKeyMessage()<CR>"
+    execute "nnoremap <leader>" . key . " :call MapKeyToCommand('" . key . "')<CR>"
+endfor
 
-nnoremap <leader><leader>m1 :call MapKeyToCommand('<leader>m1')<CR>
-nnoremap <leader><leader>m2 :call MapKeyToCommand('<leader>m2')<CR>
-nnoremap <leader><leader>m3 :call MapKeyToCommand('<leader>m3')<CR>
-nnoremap <leader><leader>m4 :call MapKeyToCommand('<leader>m4')<CR>
-nnoremap <leader><leader>m5 :call MapKeyToCommand('<leader>m5')<CR>
+nnoremap <leader>ms :call ShowMacroMappings()<CR>
 
 " Load the mappings for the current working directory
 autocmd VimEnter * call LoadMacroKeys()
-
-
