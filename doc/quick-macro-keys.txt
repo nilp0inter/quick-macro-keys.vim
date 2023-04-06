@@ -1,0 +1,84 @@
+*quick-macro-keys.txt*
+
+                     Quick Macro Keys Plugin
+                     by Nilp0inter - github.com/nilp0inter
+                     Maintainer: Nilp0inter <nilp0inter@example.com>
+
+==============================================================================
+1. Contents                                        *quick-macro-keys-contents*
+
+    1. Contents..........................: |quick-macro-keys-contents|
+    2. Introduction......................: |quick-macro-keys-introduction|
+    3. Usage.............................: |quick-macro-keys-usage|
+    4. Configuration.....................: |quick-macro-keys-configuration|
+    5. Functions.........................: |quick-macro-keys-functions|
+
+==============================================================================
+2. Introduction                                *quick-macro-keys-introduction*
+
+The Quick Macro Keys plugin for Vim allows users to easily create, save, and
+load custom key mappings for various commands. It provides a convenient way to
+manage and use mappings across different projects and directories.
+
+==============================================================================
+3. Usage                                              *quick-macro-keys-usage*
+
+To create a new mapping:
+
+	1. Press `<leader><leader>` followed by one of the predefined macro
+	keys (default: `<leader>m1` to `<leader>m5`).
+	2. Enter the command you want to map.
+	3. Press `<Enter>` to save the mapping.
+
+To use a mapping, press the corresponding macro key (e.g., `<leader>m1`).
+
+To view all the current mappings, press `<leader>ms`.
+
+To clear a mapping, you can delete the corresponding line in the mapping file
+located in the `g:vim_macro_keys_dir` directory (default:
+`~/.vim-macro-keys`).
+
+==============================================================================
+5. Configuration                              *quick-macro-keys-configuration*
+
+You can customize the plugin by setting the following global variables in your
+`.vimrc` or `init.vim`:
+
+	- `g:vim_macro_keys_dir`: The directory where the plugin stores the
+	  mapping files (default: `~/.vim-macro-keys`).
+
+	- `g:vim_macro_keys`: A list of keys that can be used as macro keys
+	  (default: ['<leader>m1', '<leader>m2', '<leader>m3', '<leader>m4',
+	  '<leader>m5']).
+
+For example, to change the macro keys directory and add two additional macro
+keys, you can add the following lines to your .vimrc or init.vim:
+
+	let g:vim_macro_keys_dir = '~/.my-custom-macro-keys'
+	let g:vim_macro_keys = ['<leader>m1', '<leader>m2']
+
+This will change the default directory for storing mapping files and decrease
+the number of available macro keys to two.
+
+==============================================================================
+6. Functions                                      *quick-macro-keys-functions*
+
+The Quick Macro Keys plugin provides the following functions:
+
+	MapKeyToCommand(key): Maps the given key to a user-specified command.
+
+	LoadMacroKeys(): Loads the key mappings from the global directory for
+	the current working directory and all its parent directories.
+
+	ShowMacroMappings(): Displays the current macro key mappings in a new
+	buffer.
+
+	UnsetKeyMessage(): Displays a message to inform the user that a key is
+	not set and should be set using the corresponding double leader
+	command.
+
+These functions are mainly for internal use, and you usually don't need to
+call them directly.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
