@@ -13,8 +13,8 @@ To use QuickMacroKeys, follow these simple steps:
    the plugin. For example, you can select 3 keys.
 2. Set macro keys: Configure each dedicated macro key on your macro pad to send
    a specific sequence of characters when pressed. For example, you can set the
-   keys to send <leader>m1, <leader>m2, and <leader>m3.
-3. Configure the plugin: With QuickMacroKeys installed, press <leader> followed
+   keys to send `<leader>m1`, `<leader>m2`, and `<leader>m3`.
+3. Configure the plugin: With QuickMacroKeys installed, press `<leader>` followed
    by the corresponding macro key in Vim's normal mode. You will be prompted to
    enter a Vim command that should be executed when that particular macro key
    is pressed.
