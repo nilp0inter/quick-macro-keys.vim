@@ -39,7 +39,7 @@ located in the `g:vim_macro_keys_dir` directory (default:
 `~/.vim-macro-keys`).
 
 ==============================================================================
-5. Configuration                              *quick-macro-keys-configuration*
+4. Configuration                              *quick-macro-keys-configuration*
 
 You can customize the plugin by setting the following global variables in your
 `.vimrc` or `init.vim`:
@@ -61,7 +61,7 @@ This will change the default directory for storing mapping files and decrease
 the number of available macro keys to two.
 
 ==============================================================================
-6. Functions                                      *quick-macro-keys-functions*
+5. Functions                                      *quick-macro-keys-functions*
 
 The Quick Macro Keys plugin provides the following functions:
 
