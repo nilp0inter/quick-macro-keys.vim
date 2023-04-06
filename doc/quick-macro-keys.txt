@@ -1,8 +1,7 @@
 *quick-macro-keys.txt*
 
                      Quick Macro Keys Plugin
-                     by Nilp0inter - github.com/nilp0inter
-                     Maintainer: Nilp0inter <nilp0inter@example.com>
+                     by nilp0inter - github.com/nilp0inter
 
 ==============================================================================
 1. Contents                                        *quick-macro-keys-contents*
